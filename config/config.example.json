@@ -1,0 +1,22 @@
+{
+  "database": {
+    "engine": "sqlite",
+    "host": "127.0.0.1",
+    "name": "pokebot",
+    "password": "",
+    "port": 5432,
+    "username": "postgres"
+  },
+  "messengers": {
+    "messenger_1": {
+      "active": true,
+      "embedded_messages": true,
+      "messenger_type": "discord",
+      "stockists": [
+        "chaoscards.co.uk",
+        "magicmadhouse.co.uk"
+      ],
+      "webhook_url": "https://discord.com/api/webhooks/"
+    }
+  }
+}
