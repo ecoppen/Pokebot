@@ -105,7 +105,7 @@ class Chiefcards(Stockist):
                     "Colour": 0x00FF00,
                     "Title": name,
                     "Image": f"https:{img['src'][:img['src'].find("?")].strip()}",
-                    "URL": f"https://www.chiefcards.co.uk/{url['href'].strip()}",
+                    "URL": f"https://www.chiefcards.co.uk{url['href'][:img['href'].find("?")].strip()}",
                     "Price": price.text.strip(),
                     "Stock": Stock.IN_STOCK.value,
                     "Website": self.name,
