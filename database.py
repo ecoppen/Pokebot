@@ -87,7 +87,10 @@ class Database:
 
     def remove_currency(self, currency_string: str) -> float:
         trim = re.compile(r"[^\d.]+")
-        return float(trim.sub("", str(currency_string)))
+        try:
+            return float(trim.sub("", str(currency_string)))
+        except Exception:
+            return 0.0
 
     def update_or_insert_last_scraped(self, stockist):
         table_object = self.get_table_object(table_name="last_scraped")
