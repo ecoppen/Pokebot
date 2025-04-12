@@ -1,14 +1,11 @@
 import logging
-import secrets
 import time
 import urllib.error
 from enum import Enum
 from typing import Any, Union
 
 import chromedriver_autoinstaller
-from selenium import webdriver
-from selenium.common.exceptions import WebDriverException
-from selenium.webdriver.chrome.options import Options
+from seleniumbase import SB
 
 from stockist.useragents import UserAgent
 from stockist.utils import send_public_request
@@ -44,24 +41,14 @@ class Stockist:
             log.error(f"Error with chromedriver auto-installation - {e}")
             return ""
 
-        options = Options()
-        options.headless = True
-        options.add_argument("--headless")
-        options.add_experimental_option("excludeSwitches", ["enable-automation"])
-        options.add_experimental_option("excludeSwitches", ["enable-logging"])
-        options.add_experimental_option("useAutomationExtension", False)
-        options.add_argument("--disable-blink-features=AutomationControlled")
-        options.add_argument("--no-sandbox")
-        options.add_argument(f"user-agent={secrets.choice(user_agent_list)}")
-        try:
-            driver = webdriver.Chrome(options=options)
-            driver.get(url)
-        except WebDriverException as e:
-            log.error(f"Selenium exception: {e.msg}")
-            return ""
-        time.sleep(5)
-        html = driver.page_source
-        driver.quit()
+        with SB(uc=True) as sb:
+            try:
+                sb.uc_open_with_reconnect(url, reconnect_time=4)
+            except Exception as e:
+                log.error(f"Selenium exception: {e}")
+                return ""
+            time.sleep(5)
+            html = sb.get_page_source()
         return html
 
     def get_pokemon(self):
