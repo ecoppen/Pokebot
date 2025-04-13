@@ -46,10 +46,10 @@ class Chaoscards(Stockist):
                     },
                 )
                 stock = card.find_all(
-                    "p",
+                    "span",
                     attrs={
                         "class": lambda e: (
-                            e.startswith("prod-el__availability") if e else False
+                            e.startswith("prod-el__quick-buy") if e else False
                         )
                     },
                 )
@@ -96,10 +96,7 @@ class Chaoscards(Stockist):
                     "Website": self.name,
                 }
 
-                if (
-                    stock.text.strip() == "Out of stock"
-                    or stock.text.strip() == "Coming soon"
-                ):
+                if stock.text.strip() == "Notify me":
                     found["Colour"] = 0xFF0000
                     found["Stock"] = Stock.OUT_OF_STOCK.value
                 else:
