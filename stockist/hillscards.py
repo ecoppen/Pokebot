@@ -21,7 +21,7 @@ class Hillscards(Stockist):
             "keywords": "",
             "show": "48",
             "sort": "7",
-            "tags_id[]": ["368", "376", "379", "382"],
+            "tags_id[]": ["368", "376", "379", "382", "399"],
             "child_categories[]": "92|97|98|99|100|101|102",
             "transport": "html",
         }
