@@ -51,7 +51,7 @@ class StockistManager:
                 magicmadhouse = Magicmadhouse(messengers=messengers)
                 self.all_stockists.append(magicmadhouse)
                 log.info(f"Now tracking {stockist}")
-            elif stockist == "pokedecks.co.uk":
+            elif stockist == "pokedecks.uk":
                 pokedecks = Pokedecks(messengers=messengers)
                 self.all_stockists.append(pokedecks)
                 log.info(f"Now tracking {stockist}")
