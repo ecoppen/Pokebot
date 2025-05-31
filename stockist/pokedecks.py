@@ -19,10 +19,10 @@ class Pokedecks(Stockist):
     def get_pokemon(self):
         all_found = []
 
-        for page in range(1, 1):
+        for page in range(1, 2):
             log.info(f"Scraping page {page} of {self.name}")
 
-            response = self.scrape(url=self.base_url)
+            response = self.scrape(url=self.base_url, payload=self.params)
             soup = BeautifulSoup(response.content, "html.parser")
             cards = soup.find_all("li", class_="grid__item")
 
