@@ -5,6 +5,8 @@ from stockist.chaoscards import Chaoscards
 from stockist.chiefcards import Chiefcards
 from stockist.hillscards import Hillscards
 from stockist.magicmadhouse import Magicmadhouse
+from stockist.pokedecks import Pokedecks
+from stockist.ultracards import Ultracards
 
 log = logging.getLogger(__name__)
 
@@ -17,6 +19,8 @@ class StockistManager:
                 Chaoscards,
                 Hillscards,
                 Magicmadhouse,
+                Pokedecks,
+                Ultracards,
             ]
         ] = []
         self.messengers = messengers
@@ -46,6 +50,14 @@ class StockistManager:
             elif stockist == "magicmadhouse.co.uk":
                 magicmadhouse = Magicmadhouse(messengers=messengers)
                 self.all_stockists.append(magicmadhouse)
+                log.info(f"Now tracking {stockist}")
+            elif stockist == "pokedecks.co.uk":
+                pokedecks = Pokedecks(messengers=messengers)
+                self.all_stockists.append(pokedecks)
+                log.info(f"Now tracking {stockist}")
+            elif stockist == "ultracards.co.uk":
+                ultracards = Ultracards(messengers=messengers)
+                self.all_stockists.append(ultracards)
                 log.info(f"Now tracking {stockist}")
 
         stockist_check = self.check_for_one_stockist()
