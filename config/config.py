@@ -28,6 +28,8 @@ class Stockist(Enum):
     CHAOSCARDS = "chaoscards.co.uk"
     HILLSCARDS = "hillscards.co.uk"
     MAGICMADHOUSE = "magicmadhouse.co.uk"
+    POKEDECKS = "pokedecks.uk"
+    ULTRACARDS = "ultracards.co.uk"
 
 
 class Database(BaseModel, use_enum_values=True, extra=Extra.forbid):
