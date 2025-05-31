@@ -145,6 +145,7 @@ class Database:
                     ):
                         datum["Stock"] = Stock.PRICE_CHANGE.value
                         datum["Colour"] = 0xFFFFFF
+                        datum["OldPrice"] = item.Price
                         log.info(
                             f"Price changed for {item.Title} "
                             f"from {item.Price} to {datum['Price']}"

@@ -66,7 +66,7 @@ class Discord(Messenger):
             "URL": "url",
             "Image": "thumbnail",
         }
-        payload_keys = ["Price", "Stock", "Website"]
+        payload_keys = ["Price", "Stock", "Website", "OldPrice"]
         options = {}
         payload = {}
         for k, v in embed_data.items():
@@ -78,5 +78,9 @@ class Discord(Messenger):
 
             elif k in payload_keys:
                 payload[k] = v
+
+        if "OldPrice" in payload and "Price" in payload:
+            payload["Price"] = f"~~{payload['OldPrice']}~~ → {payload['Price']}"
+            del payload["OldPrice"]
 
         return options, payload
