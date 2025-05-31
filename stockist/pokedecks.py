@@ -19,8 +19,7 @@ class Pokedecks(Stockist):
     def get_pokemon(self):
         all_found = []
 
-        for page in range(1, 2):
-            self.params["page"] = page
+        for page in range(1, 1):
             log.info(f"Scraping page {page} of {self.name}")
 
             response = self.scrape(url=self.base_url)
